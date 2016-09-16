@@ -96,7 +96,7 @@ body {
 #leftmenu li {
   list-style: none;
   padding: 15px 0 8px 0;
-  border-bottom: #fff dashed 1px; 
+  border-bottom: #fff dashed 1px;
 }
 
 #leftmenu li a, #leftmenu li a:visited {
@@ -104,4 +104,8 @@ body {
   text-decoration: none;
   font-weight: bold;
   font-size: 14px;
+}
+
+#content1 {
+
 }
