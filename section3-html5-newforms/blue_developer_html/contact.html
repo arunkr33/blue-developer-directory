@@ -45,8 +45,20 @@
 			<form method="post" action="somescript.php">
 				<p>
 					<label for="name">Full Name:</label>
-					<input type="text" name="name">
+					<input type="text" id="name" name="name" oninput="checkName();">
 				</p>
+
+				<script>
+					function checkName() {
+						var nameInput = document.getElementById("name");
+						if (nameInput.value != "David") {
+							nameInput.setCustomValidity("Le nom doit être David");
+						} else {
+							nameInput.setCustomValidity("");
+						}
+					}
+				</script>
+
 				<p>
 					<label for="email">Email Address: </label>
 					<input type="email" name="email">
@@ -65,10 +77,10 @@
 					<label for="location">Location: </label>
 					<input list="location">
 					<datalist id="location">
-							<option value="Paris"></option>
-							<option value="Marseille"></option>
-							<option value="Montpellier"></option>
-						</datalist>
+						<option value="Paris"></option>
+						<option value="Marseille"></option>
+						<option value="Montpellier"></option>
+					</datalist>
 				</p>
 
 				<fieldset name="about">
