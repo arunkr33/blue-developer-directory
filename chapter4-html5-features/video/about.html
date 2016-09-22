@@ -50,30 +50,37 @@
 			</video>
 
 			<div style="width: 400px;">
-				<button id="playPause" onclick="playPause()">Play/Pause</button>
-				<button onclick="makeBig()">Big</button>
-				<button onclick="makeSmall()">Small</button>
-				<button onclick="makeNormal()">Normal</button>
+				<input type="button" id="playPauseButton" value="Play" onclick="playPause()">
+				<input type="button" id="forwardButton" value="Forward" onclick="forward()">
 			</div>
 
 			<script>
-				var myVideo = document.getElementById('ad_video');
+				var myVideo = document.getElementById("ad_video");
+				var playPauseButton = document.getElementById("playPauseButton");
+				var forwardButton = document.getElementById("forwardButton");
 				
 				function playPause() {
 					if (myVideo.paused) {
 						myVideo.play();
+						playPauseButton.value = "Pause";
+
 					} else {
 						myVideo.pause();
+						playPauseButton.value = "Play";
 					}
 				}
-				function makeBig() {
-					myVideo.width=560;
-				}
-				function makeSmall() {
-					myVideo.width=320;
-				}
-				function makeNormal() {
-					myVideo.width=420;
+
+				function forward() {
+					console.log("video playbackRate = " + myVideo.playbackRate);
+					if (myVideo.playbackRate == 1.0) {
+						myVideo.playbackRate = 1.5;
+						forwardButton.value = "Normal";
+						console.log("avance rapide = " + myVideo.playbackRate);
+					}	else {
+						myVideo.playbackRate = 1.0;
+						forwardButton.value = "Forward";
+						console.log("lecture normale = " + myVideo.playbackRate);
+					}
 				}
 			</script>
 		</section>
