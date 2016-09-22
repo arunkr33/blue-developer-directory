@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<link rel="stylesheet" href="css/style.css" type="text/css">
 	<title>Blue Developer Directory</title>
 </head>
@@ -44,45 +45,34 @@
 			<h3>What Skills Do Our Developers Have?</h3>
 			<p>Our listed fictional web developers skill ranges from Graphic design with Photoshop, Illustrator and Fireworks to markup languages like HTML5, XHTML and XML to programming languages such as Javascript, PHP, Python and ASP</p>
 
-			<video id="ad_video" width="420" height="290" controls>
+			<video id="myVideo" width="420" height="290" controls onloadedmetadata="initCanvas()">
 				<source src="videos/ad.mp4" type="video/mp4">
 				Your browser does not support HTML5 video
 			</video>
+			<canvas id="myCanvas" style="border: 2px solid #000; display: block; margin: 0;"></canvas>
 
-			<div style="width: 400px;">
-				<input type="button" id="playPauseButton" value="Play" onclick="playPause()">
-				<input type="button" id="forwardButton" value="Forward" onclick="forward()">
-			</div>
+			<p style="float: left;"><input type="button" value="Aperçu" onclick="screenshot()"/></p>
 
 			<script>
-				var myVideo = document.getElementById("ad_video");
-				var playPauseButton = document.getElementById("playPauseButton");
-				var forwardButton = document.getElementById("forwardButton");
-				
-				function playPause() {
-					if (myVideo.paused) {
-						myVideo.play();
-						playPauseButton.value = "Pause";
+				var video = document.getElementById("myVideo");
+				var canvas = document.getElementById("myCanvas");
+				var context = canvas.getContext("2d");
 
-					} else {
-						myVideo.pause();
-						playPauseButton.value = "Play";
-					}
+				// taille de l'image extraite
+				var w = 200;
+				var h = 0;
+
+				function initCanvas() {
+					h = w * video.videoHeight / video.videoWidth;
+					canvas.width = w;
+					canvas.height = h;
 				}
 
-				function forward() {
-					console.log("video playbackRate = " + myVideo.playbackRate);
-					if (myVideo.playbackRate == 1.0) {
-						myVideo.playbackRate = 1.5;
-						forwardButton.value = "Normal";
-						console.log("avance rapide = " + myVideo.playbackRate);
-					}	else {
-						myVideo.playbackRate = 1.0;
-						forwardButton.value = "Forward";
-						console.log("lecture normale = " + myVideo.playbackRate);
-					}
+				function screenshot() {
+					context.drawImage(myVideo, 0, 0, w, h);
 				}
 			</script>
+
 		</section>
 	</div><!--container end-->
 	<div style="clear;both"></div>
