@@ -1,3 +1,3 @@
-# tuto-udemy-html5
+# blue-developer-directory
 
-Tuto Udemy HTML5 From Scratch
+Website built during Udemy HTML5 From Scratch Course. Directory for developers.
